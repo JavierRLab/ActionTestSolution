@@ -4,9 +4,13 @@ jobs:
   check-build-test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
+      - name: Checking out repo
+        uses: actions/checkout@v3
+      - name: Setting up SDK
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: '6.0.x'
-      - run: dotnet build TestProject1
-      - run: dotnet test
+      - name: Building TestProject1
+        run: dotnet build TestProject1
+      - name: Running tests
+        run: dotnet test
